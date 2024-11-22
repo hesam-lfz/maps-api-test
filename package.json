@@ -10,6 +10,7 @@
   "keywords": [],
   "devDependencies": {
     "@learningfuze/lfz-config": "^1.0.5",
+    "@types/google.maps": "^3.58.1",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.17.0",
     "eslint": "^8.22.0",
@@ -28,5 +29,8 @@
     "stylelint-config-standard": "^32.0.0",
     "typescript": "^5.3.3"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8"
+  }
 }

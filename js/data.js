@@ -1,18 +1,6 @@
 // Data.ts
-
-export interface MapLocation {
-  lat: string;
-  lng: string;
-}
-
-export interface Station {
-  name: string;
-  address: string;
-  distance: string;
-}
-
 // Mock data for charging stations
-export const stations: Station[] = [
+export const stations = [
   {
     name: 'Rapid Charge Station 1',
     address: '123 Greenway Blvd',

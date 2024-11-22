@@ -1,36 +1,24 @@
-// import { Loader } from '@googlemaps/js-api-loader';
-interface MapLocation {
-  lat: string;
-  lng: string;
-}
-
-let map: google.maps.Map;
-
+'use strict';
+let map;
 // Function to switch between screens
-function showScreen(screenId: string): void {
+function showScreen(screenId) {
   const allScreens = document.querySelectorAll('.content');
   allScreens.forEach((screen) => screen.classList.add('hidden'));
   document.getElementById(screenId)?.classList.remove('hidden');
 }
-
 // Handle 'Plan My Trip' submission
-const tripForm = document.getElementById('trip-form') as HTMLFormElement;
+const tripForm = document.getElementById('trip-form');
 tripForm.addEventListener('submit', (event) => {
   event.preventDefault();
-
   // Extract form inputs
-  const start = (document.getElementById('start') as HTMLInputElement).value;
-  const destination = (
-    document.getElementById('destination') as HTMLInputElement
-  ).value;
-  const range = (document.getElementById('range') as HTMLInputElement).value;
-
+  const start = document.getElementById('start').value;
+  const destination = document.getElementById('destination').value;
+  const range = document.getElementById('range').value;
   // Validate inputs
   if (!start || !destination || !range) {
     alert('Please fill out all fields.');
     return;
   }
-
   // Navigate to Map Screen
   showScreen('map-screen');
   const [startLat, startLng] = start.split(',');
@@ -42,21 +30,17 @@ tripForm.addEventListener('submit', (event) => {
   );
   displayStations();
 });
-
 // Display map (placeholder)
-function displayMap(start: MapLocation, destination: MapLocation): void {
+function displayMap(start, destination) {
   map.setCenter(new google.maps.LatLng(+start.lat, +start.lng));
-  console.log(destination);
 }
-
 // Display charging stations (mock data)
-function displayStations(): void {
+function displayStations() {
   const stations = [
     { name: 'Station 1', address: '123 Main St', distance: '2 miles' },
     { name: 'Station 2', address: '456 Elm St', distance: '5 miles' },
     { name: 'Station 3', address: '789 Oak St', distance: '10 miles' },
   ];
-
   const stationsList = document.getElementById('stations-list');
   if (stationsList) {
     stationsList.innerHTML = stations
@@ -72,7 +56,6 @@ function displayStations(): void {
       .join('');
   }
 }
-
 // Menu navigation
 const menuItems = document.querySelectorAll('.menu-item');
 menuItems.forEach((menuItem) => {
@@ -83,19 +66,13 @@ menuItems.forEach((menuItem) => {
     }
   });
 });
-
-async function initMap(): Promise<void> {
-  const { Map } = (await google.maps.importLibrary(
-    'maps',
-  )) as google.maps.MapsLibrary;
-  map = new Map(document.getElementById('map') as HTMLElement, {
+async function initMap() {
+  const { Map } = await google.maps.importLibrary('maps');
+  map = new Map(document.getElementById('map'), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 8,
   });
 }
-
-console.log(initMap);
-
 /*
 const loader = new Loader({
   apiKey: 'API_KEY',
@@ -114,7 +91,6 @@ loader.load().then(async () => {
 });
 
 */
-
 document.addEventListener('DOMContentLoaded', () => {
   const apiKey = prompt('Enter your Google Maps API KEY');
   const sTag = document.createElement('script');
