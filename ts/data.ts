@@ -1,10 +1,5 @@
 // Data.ts
 
-export interface MapLocation {
-  lat: string;
-  lng: string;
-}
-
 export interface Station {
   name: string;
   address: string;
