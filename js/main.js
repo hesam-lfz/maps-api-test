@@ -33,6 +33,7 @@ tripForm.addEventListener('submit', (event) => {
 // Display map (placeholder)
 function displayMap(start, destination) {
   map.setCenter(new google.maps.LatLng(+start.lat, +start.lng));
+  console.log(destination);
 }
 // Display charging stations (mock data)
 function displayStations() {
@@ -67,12 +68,21 @@ menuItems.forEach((menuItem) => {
   });
 });
 async function initMap() {
-  const { Map } = await google.maps.importLibrary('maps');
-  map = new Map(document.getElementById('map'), {
+  /*
+    const { Map } = (await google.maps.importLibrary(
+      'maps',
+    )) as google.maps.MapsLibrary;
+    map = new Map(document.getElementById('map') as HTMLElement, {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8,
+    });
+    */
+  map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+    zoom: 18,
   });
 }
+console.log(initMap);
 /*
 const loader = new Loader({
   apiKey: 'API_KEY',
