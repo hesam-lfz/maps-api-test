@@ -1,3 +1,3 @@
-# front-end-project
+# maps-api-test
 
-A dynamic HTML, CSS, and TypeScript solo project.
+testing Google Maps API in HTML/TS/JS.
